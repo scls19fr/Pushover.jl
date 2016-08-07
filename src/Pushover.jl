@@ -63,35 +63,33 @@ module Pushover
         )
 
         # Optional parameters
-        if device != nothing
+        if !is(device, nothing)
             params["device"] = device
         end
 
-        if title != nothing
+        if !is(title, nothing)
             params["title"] = _crop(title, client.max_title_len)
         end
 
-        if url != nothing
+        if !is(url, nothing)
             params["url"] = url
         end
 
-        if url_title != nothing
+        if !is(url_title, nothing)
             params["url_title"] = url_title
         end
 
-        if priority != nothing
+        if !is(priority, nothing)
             params["priority"] = _sanitize_priority(priority)
         end
 
-        if timestamp != nothing
+        if !is(timestamp, nothing)
             params["timestamp"] = timestamp
         end
 
-        if sound != nothing
+        if !is(sound, nothing)
             params["sound"] = sound
         end
-
-        println(params)
 
         raw_response = post(url_query; data = params)
         response = json(raw_response)
@@ -101,6 +99,7 @@ module Pushover
             throw(exception)
         end
 
+        response
     end
 
 end # module

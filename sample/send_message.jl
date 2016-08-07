@@ -4,4 +4,5 @@ include("config.jl")
 
 client = PushoverClient(CONFIG["USER_KEY"], CONFIG["API_TOKEN"])
 message = "My first message"
-send(client, message, priority=1)
+response = send(client, message, priority=1)
+println("response: $response")
