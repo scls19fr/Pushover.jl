@@ -11,11 +11,11 @@ module Pushover
     _DEFAULT_MAX_MESSAGE_LEN = 512
 
 
-    type PushoverException <: Exception
+    struct PushoverException <: Exception
         response::Dict
     end
 
-    type PushoverClient
+    struct PushoverClient
         user_key::AbstractString
         api_token::AbstractString
 
@@ -56,38 +56,38 @@ module Pushover
         message = _crop(message, client.max_message_len)
 
         # Required parameters
-        params = Dict{ASCIIString,Any}(
+        params = Dict(
             "user" => client.user_key,
             "token" => client.api_token,
             "message" => message,
         )
 
         # Optional parameters
-        if !is(device, nothing)
+        if !(device === nothing)
             params["device"] = device
         end
 
-        if !is(title, nothing)
+        if !(title === nothing)
             params["title"] = _crop(title, client.max_title_len)
         end
 
-        if !is(url, nothing)
+        if !(url === nothing)
             params["url"] = url
         end
 
-        if !is(url_title, nothing)
+        if !(url_title === nothing)
             params["url_title"] = url_title
         end
 
-        if !is(priority, nothing)
-            params["priority"] = _sanitize_priority(priority)
+        if !(priority === nothing)
+            params["priority"] = string(_sanitize_priority(priority))
         end
 
-        if !is(timestamp, nothing)
+        if !(timestamp === nothing)
             params["timestamp"] = timestamp
         end
 
-        if !is(sound, nothing)
+        if !(sound === nothing)
             params["sound"] = sound
         end
 
