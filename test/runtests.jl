@@ -2,7 +2,13 @@ using Pushover
 using Base.Test
 using Lint
 
-@test isempty(lintpkg("Pushover"))
+@testset "Pushover" begin
+    @testset "tests" begin
+        # write your own tests here
+        @test 1 == 1
+    end
 
-# write your own tests here
-@test 1 == 1
+    @testset "lint" begin
+        @test isempty(lintpkg("Pushover"))
+    end
+end
