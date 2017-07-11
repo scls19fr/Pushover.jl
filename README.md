@@ -7,6 +7,12 @@ A Julia package to send notifications using the [Pushover Notification Service](
 ## Install
 
 ```julia
+Pkg.add("Pushover")
+```
+
+or
+
+```julia
 Pkg.clone("https://github.com/scls19fr/Pushover.jl")
 ```
 
