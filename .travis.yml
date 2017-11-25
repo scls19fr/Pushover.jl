@@ -7,6 +7,11 @@ julia:
 #  - release
   - 0.6
   - nightly
+## uncomment the following lines to allow failures on nightly julia
+## (tests will run but not make your overall status red)
+matrix:
+  allow_failures:
+  - julia: nightly
 notifications:
   email: false
 # uncomment the following lines to override the default test script
