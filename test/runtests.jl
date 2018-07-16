@@ -1,6 +1,6 @@
 using Pushover
 using Pushover: _sanitize_priority, _crop
-using Base.Test
+using Test
 using Lint
 
 @testset "Pushover" begin
