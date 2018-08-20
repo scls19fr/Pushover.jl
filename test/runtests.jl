@@ -1,7 +1,7 @@
 using Pushover
 using Pushover: _sanitize_priority, _crop
-using Base.Test
-using Lint
+using Test
+#using Lint  # unsupported Julia 0.7 version as of 2018/08/19
 
 @testset "Pushover" begin
     @testset "_sanitize_priority" begin
@@ -29,7 +29,7 @@ using Lint
         @test cropped_msg[end-2:end] == "..."
     end
 
-    @testset "lint" begin
-        @test isempty(lintpkg("Pushover"))
-    end
+    #@testset "lint" begin
+    #    @test isempty(lintpkg("Pushover"))
+    #end
 end

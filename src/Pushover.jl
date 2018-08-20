@@ -4,9 +4,11 @@ as documented [here](https://pushover.net/api).
 """
 module Pushover
 
+    import Sockets: send
     export PushoverClient, send
 
-    using Requests: post, json
+    using HTTP
+    using JSON
 
 
     _DEFAULT_TITLE = "default_title"
@@ -131,8 +133,10 @@ module Pushover
             params["sound"] = sound
         end
 
-        raw_response = post(url_query; data = params)
-        response = json(raw_response)
+        raw_response = HTTP.request("POST", url_query,
+            ["Content-Type" => "application/json"],
+            JSON.json(params))
+        response = JSON.parse(String(raw_response.body))
 
         if response["status"] != 1
             exception = PushoverException(response)
