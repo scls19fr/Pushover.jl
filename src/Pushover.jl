@@ -10,7 +10,6 @@ module Pushover
     using HTTP
     using JSON
 
-
     _DEFAULT_TITLE = "default_title"
     _DEFAULT_PRIORITY = 0
     _DEFAULT_MAX_TITLE_LEN = 100
